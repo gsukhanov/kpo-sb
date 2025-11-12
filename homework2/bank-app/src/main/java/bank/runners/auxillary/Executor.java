@@ -22,7 +22,8 @@ public class Executor {
             Timer t = new Timer(command);
             Object ret = t.execute();
             try {
-                System.out.println(command.getName() + " took " + t.getTime().getSeconds() + " seconds");
+                String time = String.format("%.3f ms", t.getTime().toNanos() * 1e-6F);
+                System.out.println(command.getName() + " took " + time + " milliseconds");
             } catch (RuntimeException e) {
                 System.out.println(e.getMessage());
                 System.exit(-1);

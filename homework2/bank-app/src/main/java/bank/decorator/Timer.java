@@ -17,7 +17,7 @@ public class Timer {
         Instant begin = Instant.now();
         Object obj = command.execute();
         Instant end = Instant.now();
-        time = Duration.between(end, begin);
+        time = Duration.between(begin, end);
         return obj;
     }
     public Duration getTime() {
