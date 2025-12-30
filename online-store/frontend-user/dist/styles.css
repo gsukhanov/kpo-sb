@@ -1,0 +1,24 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b0c10;color:#eaf0ff}
+.wrap{max-width:980px;margin:0 auto;padding:22px}
+.header{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:16px}
+h1{margin:0}
+.sub{color:#a8b3c7;font-size:14px;margin-top:4px}
+.card{background:#121520;border:1px solid #1e2433;border-radius:14px;padding:16px;margin:14px 0}
+.note{background:#0f1320}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}
+input{padding:10px 12px;border-radius:10px;border:1px solid #2a3145;background:#0e1018;color:#eaf0ff;min-width:220px}
+button{padding:10px 12px;border-radius:10px;border:1px solid #2a3145;background:#1a2140;color:#eaf0ff;cursor:pointer}
+button:hover{filter:brightness(1.1)}
+button.ghost{background:transparent}
+.userBox{display:flex;gap:10px;align-items:center}
+.muted{color:#a8b3c7}
+.hint{margin-top:10px}
+.balance{margin-left:auto}
+.msg{margin-top:10px;min-height:18px}
+.tableWrap{overflow:auto;border-radius:10px;border:1px solid #2a3145;margin-top:12px}
+table{width:100%;border-collapse:collapse;background:#0e1018}
+th,td{padding:10px 12px;border-bottom:1px solid #1f2536;text-align:left}
+thead th{background:#111427}
+a{color:#9bd1ff}
+.toast{position:fixed;right:16px;bottom:16px;max-width:420px;background:#0e1018;border:1px solid #2a3145;border-radius:12px;padding:12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35)}

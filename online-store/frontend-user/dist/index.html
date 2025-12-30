@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Store</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <div>
+        <h1>Online Store</h1>
+        <div class="sub">Простой интерфейс для покупателя</div>
+      </div>
+      <div class="userBox">
+        <span class="muted">Пользователь:</span>
+        <strong id="userLabel">—</strong><span class="muted">Backend:</span><strong id="backendLabel">?</strong>
+        <button id="btnLogout" class="ghost">Сменить</button>
+      </div>
+    </header>
+
+    <section id="loginCard" class="card">
+      <h2>Вход</h2>
+      <p class="muted">Введите <code>userId</code>. Мы запомним его и будем выполнять операции от вашего имени.</p>
+      <div class="row">
+        <input id="loginUserId" type="number" min="1" placeholder="например: 1" />
+        <button id="btnLogin">Войти</button>
+      </div>
+      <div class="hint muted">Подсказка: для демонстрации можно использовать 1, 2, 3…</div>
+    </section>
+
+    <div id="app" style="display:none;">
+      <section class="card">
+        <h2>Счёт</h2>
+
+        <div class="row">
+          <button id="btnCreateAcc">Создать счёт</button>
+          <button id="btnRefreshBalance">Обновить баланс</button>
+          <div class="balance">Баланс: <strong id="balanceValue">—</strong></div>
+        </div>
+
+        <div class="row">
+          <input id="topupAmount" type="number" min="1" placeholder="Сумма пополнения" />
+          <button id="btnTopup">Пополнить</button>
+        </div>
+
+        <div class="msg muted" id="accMsg"></div>
+      </section>
+
+      <section class="card">
+        <h2>Заказы</h2>
+
+        <div class="row">
+          <input id="orderAmount" type="number" min="1" placeholder="Сумма заказа" />
+          <button id="btnCreateOrder">Создать заказ</button>
+          <button id="btnListOrders" class="ghost">Мои заказы</button>
+        </div>
+
+        <div class="row">
+          <input id="orderId" type="number" min="1" placeholder="ID заказа" />
+          <button id="btnGetOrder">Проверить статус</button>
+        </div>
+
+        <div class="tableWrap">
+          <table id="ordersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Сумма</th>
+                <th>Статус</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="msg muted" id="ordersMsg"></div>
+      </section>
+
+      <section class="card note">
+        <div class="muted">
+          Примечание: система обрабатывает оплату асинхронно — статус заказа может обновиться через несколько секунд.
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" style="display:none;"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Store Dev Console</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>Online Store: Dev Console</h1>
+    <p class="muted">Этот фронт — отдельный сервис (nginx). Он проксирует <code>/api/*</code> в <code>api-gateway</code>.</p>
+
+    <section id="authCard" class="card">
+      <h2>Вход</h2>
+      <p class="muted">Введи <code>userId</code>. Мы запомним его в браузере и будем отправлять все запросы от лица этого пользователя (через заголовок <code>X-User-Id</code>).</p>
+      <div class="grid">
+        <label>
+          <div class="lbl">User ID</div>
+          <input id="authUserId" type="number" min="1" placeholder="например: 1" />
+        </label>
+        <div class="row" style="align-self:end;">
+          <button id="btnSaveUser">Продолжить</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contextCard" class="card" style="display:none;">
+      <h2>Контекст</h2>
+      <div class="row">
+        <div class="pill">Текущий пользователь: <strong id="currentUserId">—</strong></div>
+        <button id="btnChangeUser" class="ghost">Сменить userId</button>
+      </div>
+      <div class="grid">
+        <label>
+          <div class="lbl">Idempotency-Key (для create/topup)</div>
+          <input id="idem" type="text" placeholder="например: demo-123" />
+        </label>
+      </div>
+      <div class="row">
+        <button id="btnGen">Сгенерировать ключ</button>
+        <span class="muted">Совет: используй новый ключ для новой операции, один и тот же — для ретраев.</span>
+      </div>
+    </section>
+
+    <div id="appRoot" style="display:none;">
+
+
+
+    <section class="card">
+      <h2>Payments</h2>
+      <div class="row">
+        <button id="btnCreateAcc">Create account</button>
+        <button id="btnBalance">Get balance</button>
+      </div>
+      <div class="grid">
+        <label>
+          <div class="lbl">Top up amount</div>
+          <input id="topupAmount" type="number" min="1" value="100" />
+        </label>
+        <div class="row">
+          <button id="btnTopup">Top up (idempotent)</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Orders</h2>
+      <div class="grid">
+        <label>
+          <div class="lbl">Create order amount</div>
+          <input id="orderAmount" type="number" min="1" value="500" />
+        </label>
+        <div class="row">
+          <button id="btnCreateOrder">Create order (idempotent)</button>
+          <button id="btnListOrders">List orders</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <label>
+          <div class="lbl">Order ID</div>
+          <input id="orderId" type="number" min="1" placeholder="например: 1" />
+        </label>
+        <div class="row">
+          <button id="btnGetOrder">Get order</button>
+          <button id="btnPollOrder">Poll 10x (1s)</button>
+        </div>
+      </div>
+
+      <div class="tableWrap">
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Лог</h2>
+      <pre id="log"></pre>
+    </section>
+
+        </div>
+
+<footer class="muted">
+      Открытые эндпоинты: <a href="/swagger" target="_blank" rel="noreferrer">Swagger Gateway</a>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
